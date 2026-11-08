@@ -1,0 +1,26 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: syntax check
+        run: node --check bin/cc-setup.js && node --check bin/cc-run.js && node --check bin/cc-list.js && node --check bin/cc-which.js && node --check lib/profiles.js && node --check lib/providers.js && node --check lib/prompt.js && node --check lib/claude.js
+      - name: smoke test
+        run: npm test

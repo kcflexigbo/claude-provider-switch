@@ -31,5 +31,9 @@
     "volcengine",
     "llm",
     "cli"
-  ]
+  ],
+  "scripts": {
+    "test": "node test/smoke.js",
+    "lint": "node --check bin/cc-setup.js"
+  }
 }
