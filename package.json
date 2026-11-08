@@ -1,0 +1,35 @@
+{
+  "name": "claude-provider-switch",
+  "version": "1.0.0",
+  "description": "Switch Claude Code between LLM providers (Ark, DeepSeek, or any Anthropic-compatible endpoint) with isolated per-session profiles.",
+  "license": "MIT",
+  "author": "Kenneth Igbo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcflexigbo/claude-provider-switch.git"
+  },
+  "bin": {
+    "cc-setup": "bin/cc-setup.js",
+    "cc-run": "bin/cc-run.js",
+    "cc-list": "bin/cc-list.js",
+    "cc-which": "bin/cc-which.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude-code",
+    "anthropic",
+    "deepseek",
+    "ark",
+    "volcengine",
+    "llm",
+    "cli"
+  ]
+}
