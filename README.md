@@ -70,20 +70,25 @@ cc-run ark --add-dir ~/projects/api
 |---|---|---|
 | `ark` | `https://ark.cn-beijing.volces.com/api/compatible` | `deepseek-v4-1-flash-261017` |
 | `deepseek` | `https://api.deepseek.com/anthropic` | `deepseek-flash[1m]` |
-| `syns` | `https://syns.onesyn.ai:18080` | `gpt-6-sol` |
+| `syns` | `https://syns.onesyn.ai:18080` | `gpt-6.1-sol` |
 | `custom` | you supply | you supply |
 
 ### About the `syns` gateway
 
 A Sub2API gateway that serves OpenAI and xAI models through an Anthropic-compatible
-endpoint, so Claude Code can use them. Models verified working through
-`/v1/messages`: `gpt-6-sol`, `gpt-6.1-sol`, `grok-4.6`, `codex-auto-review`
-(tool calling included). `grok-4.7` answers but ignores instruction constraints.
+endpoint, so Claude Code can use them.
 
-Not usable: the `claude-*` models and `gpt-5.x` — the gateway returns an empty
-assistant response or a ChatGPT-account restriction for those.
+Verified working through `/v1/messages`: `gpt-6.1-sol`, `gpt-6-sol`,
+`gpt-6.1-terra`, `gpt-6-luna`, `gpt-6-astra`, `grok-4.6`, `grok-4.5`,
+`codex-auto-review` (tool calling included). `grok-4.7` answers but ignores
+instruction constraints.
 
-Latency is 3–18 s per call, so this is for capability, not speed. Context is
+Broken: every `claude-*` entry returns an empty response, and all `gpt-5.x`
+models fail with a ChatGPT-account restriction or an empty response — only the
+GPT-6 family is actually served.
+
+Latency is 4–10 s per call (Grok slowest), so this is for capability, not speed.
+The gateway also flaps: expect periodic `503` / `502` bursts. Context is
 conservatively declared as 200K; adjust `CLAUDE_CODE_MAX_CONTEXT_TOKENS` in the
 profile if your model supports more.
 
