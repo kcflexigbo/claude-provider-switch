@@ -90,11 +90,14 @@ async function main() {
       const options = [
         { label: PRESETS.ark.label, hint: '  (DeepSeek V4.1 Flash)', value: 'ark' },
         { label: PRESETS.deepseek.label, hint: '', value: 'deepseek' },
-        ...existing.map((p) => ({
-          label: `${p.name}  — reconfigure`,
-          hint: `  (${p.model})`,
-          value: p.name
-        })),
+        { label: PRESETS.syns.label, hint: '  (GPT-6 / Grok)', value: 'syns' },
+        ...existing
+          .filter((p) => !PRESETS[p.name])
+          .map((p) => ({
+            label: `${p.name}  — reconfigure`,
+            hint: `  (${p.model})`,
+            value: p.name
+          })),
         { label: PRESETS.custom.label, value: 'custom' }
       ];
       provider = await choose('Which provider?', options);
