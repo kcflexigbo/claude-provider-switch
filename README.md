@@ -151,6 +151,7 @@ Claude Code hot-reloads `~/.claude/settings.json` into **running** sessions, but
 | `Model "..." isn't recognized · context assumed to be 200k` | set `CLAUDE_CODE_MAX_CONTEXT_TOKENS` in the profile |
 | `400 ... supported API model names are ...` | wrong model ID for that endpoint — re-run `cc-setup` |
 | 403 `AccessDenied` | the model isn't enabled for your account |
+| `Transcript saving is off — inherited CLAUDE_CODE_CHILD_SESSION marker` | fixed by `cc-run`: it strips the inherited marker before launching |
 
 ## License
 
