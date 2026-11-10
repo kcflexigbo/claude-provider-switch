@@ -91,7 +91,7 @@ Latency is 4–10 s per call (Grok slowest), so this is for capability, not spee
 The gateway also flaps: expect periodic `503` / `502` bursts.
 
 Context: the gateway publishes no window information at all, so the preset
-declares 500K with compaction at 450K. That matches the documented Codex/ChatGPT
+declares 500K with compaction at 400K. That matches the documented Codex/ChatGPT
 Work default for `gpt-6.1-sol` (500K, raised from 272K in October 2026); the raw
 model window is 1,050,000 with 922K max input. Note that OpenAI prices requests
 above 272K input at 2x input / 1.5x output, so stay under 272K if cost matters.
